@@ -28,7 +28,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              <img class="rounded-circle img-fluid user-avatar" src="https://secure.gravatar.com/avatar/9c275cba24f7c939201cda28f832f8e0?s=80" alt="User">
+              <%= gravatar_image_tag(current_user.email, size: 32, alt: current_user.name, :class => 'img-fluid rounded-circle user-avatar') %>
             </a>
             <div class="dropdown-menu">
               <%= link_to current_user.name, edit_user_registration_path, class: "dropdown-item" %>

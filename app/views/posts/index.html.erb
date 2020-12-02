@@ -6,7 +6,7 @@
         <% if user_signed_in? %>
         <div class="row profile p-2">
           <div class="col-4">
-            <img class="img-fluid rounded-circle" src="https://res.cloudinary.com/practicaldev/image/fetch/s--J1kzwnl0--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/67976/544fe0f6-b766-4437-8afd-a39930044121.jpeg" alt="">
+            <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name, :class => 'img-fluid rounded-circle user-avatar') %>
           </div>
           <div class="col-8">
             <p class="font-weight-bold mb-2"><%= current_user.name %></p>
@@ -24,7 +24,7 @@
         <% @posts.each do |post| %>
           <div class="row border bg-white rounded mb-3">
             <div class="p-2 col-2">
-              <img class="img-fluid rounded-circle" width="50" src="https://res.cloudinary.com/practicaldev/image/fetch/s--J1kzwnl0--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/67976/544fe0f6-b766-4437-8afd-a39930044121.jpeg" alt="">
+              <%= gravatar_image_tag(post.user.email, size: 64, alt: post.user.name, :class => 'img-fluid rounded-circle user-avatar') %>
             </div>
             <div class="pt-2 pb-4 col-10">
               <div class="user-info">
