@@ -6,10 +6,53 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-sm bg-white border-bottom fixed-top">
+        <ul class="navbar-nav flex-row align-items-center">
+          <li class="nav-item ml-3">
+            <h1 class="text-uppercase p-2 bg-dark rounded text-white font-weight-bold">
+              <a class="text-white" href="/">dev</a>
+            </h1>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto align-items-center">
+          <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Write a new post", new_post_path, class: "p-2 bg-oschool text-white rounded nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              <%= gravatar_image_tag(current_user.email, size: 32, alt: current_user.name, :class => 'img-fluid rounded-circle user-avatar') %>
+            </a>
+            <div class="dropdown-menu">
+              <%= link_to current_user.name, edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+            </div>
+          </li>
+          <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign In', new_user_session_path, class: "p-2 bg-oschool text-white rounded nav-link" %>
+          </li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+
+    <% if flash[:notice] %>
+      <div class="row">
+        <div class="col-12">
+          <div class="alert alert-success mr-auto ml-auto w-50 mt-3">
+            <strong><%= notice %></strong>
+          </div>
+        </div>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
