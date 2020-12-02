@@ -19,8 +19,8 @@ You can find the demo [here](https://protected-castle-42557.herokuapp.com/)
 
 ## Gems used
 
-- devise
-- gravatar_image_tag
+- [devise](https://rubygems.org/gems/devise)
+- [gravatar_image_tag](https://rubygems.org/gems/gravatar_image_tag)
 
 ## To run the project in local
 
