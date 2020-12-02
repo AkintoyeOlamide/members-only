@@ -15,7 +15,7 @@ Our project can be found at https://github.com/AkintoyeOlamide/members-only
 
 ## Live Demo
 
-You can find the demo [here](https://protected-castle-42557.herokuapp.com/)
+You can find the demo [here](https://damp-gorge-07639.herokuapp.com/)
 
 ## Gems used
 
