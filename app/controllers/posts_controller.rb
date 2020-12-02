@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @posts = Post.all.order("created_at DESC")
+    @posts = Post.all.order('created_at DESC')
   end
 
   def new
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      flash.notice = "Post created!"
+      flash.notice = 'Post created!'
       redirect_to root_path
     else
       render :new
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   private
 
-    def post_params
-      params.require(:post).permit(:title, :body)
-    end
+  def post_params
+    params.require(:post).permit(:title, :body)
+  end
 end

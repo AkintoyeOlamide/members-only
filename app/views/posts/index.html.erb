@@ -24,7 +24,9 @@
         <% @posts.each do |post| %>
           <div class="row border bg-white rounded mb-3">
             <div class="p-2 col-2">
-              <%= gravatar_image_tag(post.user.email, size: 64, alt: post.user.name, :class => 'img-fluid rounded-circle user-avatar') %>
+              <% if user_signed_in? %>
+                <%= gravatar_image_tag(post.user.email, size: 64, alt: post.user.name, :class => 'img-fluid rounded-circle user-avatar') %>
+              <% end %>
             </div>
             <div class="pt-2 pb-4 col-10">
               <div class="user-info">
