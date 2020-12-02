@@ -43,6 +43,10 @@ a:hover {
   cursor: pointer;
 }
 
+input[type=submit] {
+  border: none;
+}
+
 h1 {
   font-size: 28px;
   font-weight: 500;
@@ -106,10 +110,6 @@ i {
 
 .main-content i {
   font-size: 10px;
-}
-
-main {
-  height: 100vh;
 }
 
 /* media queries */

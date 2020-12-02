@@ -1,30 +1,30 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @posts = Post.all.order("created_at DESC")
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
 
     if @post.save
       flash.notice = "Post created!"
-      redirect_to new_post_path
+      redirect_to root_path
     else
       render :new
     end
   end
 
   def destroy
+    @post = Post.find(params[:id])
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash.notice = "Post '#{@post.title}' deleted!"
+    redirect_to root
   end
 
   private

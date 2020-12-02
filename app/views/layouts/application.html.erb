@@ -15,11 +15,14 @@
       <nav class="navbar navbar-expand-sm bg-white border-bottom fixed-top">
         <ul class="navbar-nav flex-row align-items-center">
           <li class="nav-item ml-3">
-            <h1 class="text-uppercase p-2 bg-dark rounded text-white font-weight-bold">dev</h1>
+            <h1 class="text-uppercase p-2 bg-dark rounded text-white font-weight-bold">
+              <a class="text-white" href="/">dev</a>
+            </h1>
           </li>
         </ul>
 
         <ul class="navbar-nav ml-auto align-items-center">
+          <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to "Write a new post", new_post_path, class: "p-2 bg-oschool text-white rounded nav-link" %>
           </li>
@@ -28,10 +31,15 @@
               <img class="rounded-circle img-fluid user-avatar" src="https://secure.gravatar.com/avatar/9c275cba24f7c939201cda28f832f8e0?s=80" alt="User">
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Edit your account</a>
-              <a class="dropdown-item" href="#">Logout</a>
+              <%= link_to current_user.name, edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
             </div>
           </li>
+          <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign In', new_user_session_path, class: "p-2 bg-oschool text-white rounded nav-link" %>
+          </li>
+          <% end %>
         </ul>
       </nav>
     </header>
